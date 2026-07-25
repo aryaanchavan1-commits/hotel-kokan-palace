@@ -85,7 +85,7 @@ export default function App() {
       {/* HERO */}
       <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/60 z-10" />
-        <img src="images/exterior/unnamed (4).jpg" alt="Konkan Palace Lodge" className="absolute inset-0 w-full h-full object-cover" style={{ filter: 'brightness(0.5)' }} />
+        <img src="images/exterior/bg.jpeg" alt="Konkan Palace Lodge" className="absolute inset-0 w-full h-full object-cover" style={{ filter: 'brightness(0.45)' }} />
         <div className="mx-auto max-w-6xl px-5 md:px-8 relative z-20 w-full">
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-6">
