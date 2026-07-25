@@ -138,7 +138,7 @@ export default function App() {
               <div key={item.title} className="group block glass-card rounded-[1.75rem] p-7 hover:-translate-y-1.5 hover:shadow-[0_24px_60px_rgba(28,28,28,0.1)] transition-all duration-300">
                 <div className="text-3xl mb-5">{item.icon}</div>
                 <h3 className="font-display text-xl text-ink mb-2.5">{item.title}</h3>
-                <p className="text-sm text-inkMuted leading-relaxed">{item.desc}</p>
+                <p className="text-sm text-inkSoft leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -170,7 +170,7 @@ export default function App() {
                 <div className="p-7 md:p-8 flex-1 flex flex-col">
                   <div className="flex items-center gap-1 mb-3">
                     {Array.from({ length: room.stars }).map((_, i) => <Star key={i} />)}
-                    <span className="text-xs text-inkMuted ml-1">{room.rating}</span>
+                    <span className="text-xs text-inkSoft ml-1">{room.rating}</span>
                   </div>
                   <h3 className="font-display text-2xl md:text-[1.75rem] text-ink mb-3">{room.name}</h3>
                   <ul className="space-y-2 mb-6 text-sm text-inkSoft">
@@ -180,9 +180,9 @@ export default function App() {
                   </ul>
                   <div className="mt-auto pt-5 border-t border-white/30 flex items-center justify-between">
                     <div>
-                      <span className="text-xs text-inkMuted">Starting at</span>
+                      <span className="text-xs text-inkSoft">Starting at</span>
                       <span className="block font-display text-2xl text-ink">₹{room.price}</span>
-                      <span className="text-[11px] text-inkMuted">per night</span>
+                      <span className="text-[11px] text-inkSoft">per night</span>
                     </div>
                     <a href={`tel:${PHONE}`} className="px-5 py-2.5 rounded-xl text-sm font-bold bg-gradient-to-r from-gold to-goldDark text-white shadow-lg shadow-gold/20 hover:shadow-xl hover:-translate-y-0.5 transition-all">Book Now</a>
                   </div>
@@ -219,7 +219,7 @@ export default function App() {
                             <span className="text-sm font-semibold text-ink">{d.label}</span>
                             <span className="text-xs font-bold text-goldDark bg-gold/10 px-2 py-0.5 rounded-full">{d.value}</span>
                           </div>
-                          <span className="text-xs text-inkMuted">{d.sub}</span>
+                          <span className="text-xs text-inkSoft">{d.sub}</span>
                         </div>
                       </div>
                     ))}
@@ -239,9 +239,9 @@ export default function App() {
                     referrerPolicy="no-referrer-when-downgrade"
                   />
                 </div>
-                <div className="p-6 md:p-8 bg-white/70 backdrop-blur-md border-t border-white/40">
+                <div className="p-6 md:p-8 bg-white/90 backdrop-blur-md border-t border-white/40">
                   <h3 className="font-display text-xl text-ink mb-1">Konkan Palace Lodge</h3>
-                  <p className="text-sm text-inkSoft">1648, Behind Juna Bus Stand, Bazaarpeth, Chiplun, Maharashtra 415605</p>
+                  <p className="text-sm text-ink">1648, Behind Juna Bus Stand, Bazaarpeth, Chiplun, Maharashtra 415605</p>
                   <div className="mt-4 flex flex-wrap gap-3">
                     <a href="https://www.google.com/maps/dir//Konkan+Palace+Lodge+Chiplun" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold bg-gradient-to-r from-gold to-goldDark text-white shadow-md shadow-gold/15 hover:shadow-lg hover:-translate-y-0.5 transition-all"><MapPin /> Get Directions</a>
                     <a href={`tel:${PHONE}`} className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold bg-ink text-white hover:bg-ink/90 shadow-md hover:-translate-y-0.5 transition-all"><Phone /> Call Now</a>
@@ -271,7 +271,7 @@ export default function App() {
       </section>
 
       {/* FOOTER / CONTACT */}
-      <footer id="contact" className="border-t border-white/40 bg-white/40 backdrop-blur-md">
+      <footer id="contact" className="border-t border-white/40 bg-white/75 backdrop-blur-md">
         <div className="mx-auto max-w-6xl px-5 md:px-8 py-14 md:py-20">
           <div className="grid md:grid-cols-12 gap-10 md:gap-8">
             <div className="md:col-span-5">
@@ -296,7 +296,7 @@ export default function App() {
               <h4 className="font-display text-lg text-ink mb-5">Quick Links</h4>
               <ul className="space-y-2.5 text-sm">
                 {navLinks.map((l) => (
-                  <li key={l.href}><a href={l.href} className="text-inkMuted hover:text-goldDark font-medium transition-colors">{l.label}</a></li>
+                  <li key={l.href}><a href={l.href} className="text-inkSoft hover:text-goldDark font-medium transition-colors">{l.label}</a></li>
                 ))}
               </ul>
             </div>
@@ -307,34 +307,34 @@ export default function App() {
                   <MapPin className="text-goldDark shrink-0 mt-0.5" />
                   <div>
                     <span className="block font-semibold text-ink">Address</span>
-                    <span className="text-inkMuted">1648, Behind Juna Bus Stand, Bazaarpeth, Chiplun, Maharashtra 415605</span>
+                    <span className="text-inkSoft">1648, Behind Juna Bus Stand, Bazaarpeth, Chiplun, Maharashtra 415605</span>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <Phone className="text-goldDark shrink-0 mt-0.5" />
                   <div>
                     <span className="block font-semibold text-ink">Phone</span>
-                    <a href={`tel:${PHONE}`} className="text-inkMuted hover:text-goldDark transition-colors">{PHONE_DISPLAY}</a>
+                    <a href={`tel:${PHONE}`} className="text-inkSoft hover:text-goldDark transition-colors">{PHONE_DISPLAY}</a>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#A6882E" strokeWidth="2" className="shrink-0 mt-0.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                   <div>
                     <span className="block font-semibold text-ink">Email</span>
-                    <a href={`mailto:${EMAIL}`} className="text-inkMuted hover:text-goldDark transition-colors">{EMAIL}</a>
+                    <a href={`mailto:${EMAIL}`} className="text-inkSoft hover:text-goldDark transition-colors">{EMAIL}</a>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <Clock className="text-goldDark shrink-0 mt-0.5" />
                   <div>
                     <span className="block font-semibold text-ink">Business Hours</span>
-                    <span className="text-inkMuted">Open 24 hours &middot; 7 days a week</span>
+                    <span className="text-inkSoft">Open 24 hours &middot; 7 days a week</span>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div className="mt-14 pt-8 border-t border-white/40 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-inkMuted">
+          <div className="mt-14 pt-8 border-t border-white/40 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-inkSoft">
             <p>&copy; {new Date().getFullYear()} Konkan Palace Lodge. All rights reserved.</p>
             <p>Built with care for travelers visiting Chiplun, Maharashtra.</p>
           </div>
