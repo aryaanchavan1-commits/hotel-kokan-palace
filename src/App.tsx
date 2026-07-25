@@ -62,7 +62,7 @@ export default function App() {
               ))}
             </div>
             <div className="hidden md:block">
-              <a href={`tel:${PHONE}`} className="inline-flex items-center gap-2.5 px-6 py-2.5 rounded-full text-sm font-semibold bg-gradient-to-r from-gold to-goldDark text-white shadow-xl shadow-gold/20 hover:shadow-2xl hover:shadow-gold/30 hover:-translate-y-0.5 transition-all duration-300">
+              <a href={`tel:${PHONE}`} className="inline-flex items-center gap-2.5 px-6 py-2.5 rounded-full text-sm font-semibold bg-ink text-white shadow-xl shadow-black/15 hover:shadow-2xl hover:shadow-black/20 hover:-translate-y-0.5 transition-all duration-300">
                 <span>Call Now</span>
                 <Phone />
               </a>
@@ -76,7 +76,7 @@ export default function App() {
               {navLinks.map((l) => (
                 <a key={l.href} href={l.href} onClick={() => setMobileOpen(false)} className="px-4 py-3 rounded-xl text-base font-medium text-inkSoft hover:text-ink hover:bg-white/50 transition-colors">{l.label}</a>
               ))}
-              <a href={`tel:${PHONE}`} className="mt-2 mx-2 px-5 py-3 rounded-xl text-center text-sm font-bold bg-gradient-to-r from-gold to-goldDark text-white shadow-lg shadow-gold/20">Call Now</a>
+              <a href={`tel:${PHONE}`} className="mt-2 mx-2 px-5 py-3 rounded-xl text-center text-sm font-bold bg-ink text-white shadow-lg shadow-black/15">Call Now</a>
             </div>
           </div>
         </div>
@@ -100,7 +100,7 @@ export default function App() {
               Clean, affordable non-AC rooms in the heart of Chiplun. Free WiFi, 24/7 hot water, and warm hospitality — right behind Juna Bus Stand.
             </p>
             <div className="flex flex-wrap gap-4">
-              <a href={`tel:${PHONE}`} className="inline-flex items-center gap-3 px-8 py-4 rounded-full text-base font-bold bg-gradient-to-r from-gold to-goldDark text-white shadow-2xl shadow-gold/30 hover:-translate-y-1 transition-all duration-300">
+              <a href={`tel:${PHONE}`} className="inline-flex items-center gap-3 px-8 py-4 rounded-full text-base font-bold bg-ink text-white shadow-2xl shadow-black/20 hover:-translate-y-1 transition-all duration-300">
                 <Phone /> Book Now &middot; {PHONE_DISPLAY}
               </a>
               <a href="#rooms" className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-base font-semibold bg-white/10 backdrop-blur-md border border-white/25 text-white hover:bg-white/20 transition-all">View Rooms &darr;</a>
@@ -184,7 +184,7 @@ export default function App() {
                       <span className="block font-display text-2xl text-ink">₹{room.price}</span>
                       <span className="text-[11px] text-inkSoft">per night</span>
                     </div>
-                    <a href={`tel:${PHONE}`} className="px-5 py-2.5 rounded-xl text-sm font-bold bg-gradient-to-r from-gold to-goldDark text-white shadow-lg shadow-gold/20 hover:shadow-xl hover:-translate-y-0.5 transition-all">Book Now</a>
+                    <a href={`tel:${PHONE}`} className="px-5 py-2.5 rounded-xl text-sm font-bold bg-ink text-white shadow-lg shadow-black/15 hover:shadow-xl hover:-translate-y-0.5 transition-all">Book Now</a>
                   </div>
                 </div>
               </div>
@@ -243,7 +243,7 @@ export default function App() {
                   <h3 className="font-display text-xl text-ink mb-1">Konkan Palace Lodge</h3>
                   <p className="text-sm text-ink">1648, Behind Juna Bus Stand, Bazaarpeth, Chiplun, Maharashtra 415605</p>
                   <div className="mt-4 flex flex-wrap gap-3">
-                    <a href="https://www.google.com/maps/dir//Konkan+Palace+Lodge+Chiplun" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold bg-gradient-to-r from-gold to-goldDark text-white shadow-md shadow-gold/15 hover:shadow-lg hover:-translate-y-0.5 transition-all"><MapPin /> Get Directions</a>
+                    <a href="https://www.google.com/maps/dir//Konkan+Palace+Lodge+Chiplun" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold bg-ink text-white shadow-md shadow-black/15 hover:shadow-lg hover:-translate-y-0.5 transition-all"><MapPin /> Get Directions</a>
                     <a href={`tel:${PHONE}`} className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold bg-ink text-white hover:bg-ink/90 shadow-md hover:-translate-y-0.5 transition-all"><Phone /> Call Now</a>
                   </div>
                 </div>
@@ -262,7 +262,7 @@ export default function App() {
               <h2 className="font-display text-3xl md:text-5xl lg:text-6xl text-ink leading-[1.05] mb-5">Book Direct. <br /><span className="italic font-light gold-gradient-text">Best Rates Guaranteed.</span></h2>
               <p className="text-inkSoft max-w-lg mx-auto mb-8 text-base md:text-lg">Call or WhatsApp us for instant confirmation and the lowest prices. No middleman, no extra charges.</p>
               <div className="flex flex-wrap gap-4 justify-center">
-                <a href={`tel:${PHONE}`} className="inline-flex items-center gap-3 px-8 py-4 rounded-full text-base md:text-lg font-bold bg-gradient-to-r from-gold to-goldDark text-white shadow-2xl shadow-gold/30 hover:-translate-y-1 transition-all duration-300"><Phone /> Call {PHONE_DISPLAY}</a>
+                <a href={`tel:${PHONE}`} className="inline-flex items-center gap-3 px-8 py-4 rounded-full text-base md:text-lg font-bold bg-ink text-white shadow-2xl shadow-black/20 hover:-translate-y-1 transition-all duration-300"><Phone /> Call {PHONE_DISPLAY}</a>
                 <a href={`https://wa.me/${PHONE.replace(/[^0-9]/g, '')}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 px-8 py-4 rounded-full text-base md:text-lg font-bold bg-white border-2 border-gold/30 text-ink hover:bg-gold/5 hover:-translate-y-1 transition-all duration-300">WhatsApp Us</a>
               </div>
             </div>
@@ -343,7 +343,7 @@ export default function App() {
 
       {/* FLOATING CTA */}
       <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
-        <a href={`tel:${PHONE}`} className="w-14 h-14 rounded-full bg-gradient-to-br from-gold to-goldDark text-white shadow-2xl shadow-gold/30 flex items-center justify-center text-xl hover:scale-110 transition-transform" title="Call Now">
+        <a href={`tel:${PHONE}`} className="w-14 h-14 rounded-full bg-ink text-white shadow-2xl shadow-black/20 flex items-center justify-center text-xl hover:scale-110 transition-transform" title="Call Now">
           <Phone />
         </a>
         <a href={`https://wa.me/${PHONE.replace(/[^0-9]/g, '')}`} target="_blank" rel="noopener noreferrer" className="w-14 h-14 rounded-full bg-[#25D366] text-white shadow-2xl shadow-black/20 flex items-center justify-center text-xl hover:scale-110 transition-transform" title="WhatsApp">
