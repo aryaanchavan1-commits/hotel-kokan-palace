@@ -39,7 +39,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  const messages = req.body?.messages;
+  const messages = (req.body as { messages?: unknown[] } | undefined)?.messages;
   if (!Array.isArray(messages) || messages.length === 0) {
     return res.status(400).json({ error: "messages array is required" });
   }
