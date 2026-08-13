@@ -13,6 +13,9 @@ const SUGGESTIONS = [
 const WELCOME =
   "Namaskar! 👋 Welcome to Konkan Palace Lodge. Ask me about rooms, prices, facilities, or getting here — or call +91 78450 83016 for instant booking.";
 
+const PHONE = "+917845083016";
+const WHATSAPP = `https://wa.me/${PHONE}?text=${encodeURIComponent("Hi Konkan Palace Lodge, I'd like to book a room.")}`;
+
 const ChatIcon = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
@@ -38,9 +41,16 @@ export default function AiAssistant() {
   const [messages, setMessages] = useState<Message[]>([{ role: "assistant", content: WELCOME }]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
 
   useEffect(() => {
     if (open) inputRef.current?.focus();
@@ -56,7 +66,6 @@ export default function AiAssistant() {
     const history: Message[] = [...messages, { role: "user", content: clean }];
     setMessages(history);
     setInput("");
-    setError(null);
     setLoading(true);
     try {
       const res = await fetch("/api/chat", {
@@ -70,7 +79,6 @@ export default function AiAssistant() {
       if (!reply) throw new Error("Empty reply");
       setMessages((m) => [...m, { role: "assistant", content: reply }]);
     } catch {
-      setError("Sorry, I couldn't reach the assistant just now. Please call +91 78450 83016 for instant help.");
       setMessages((m) => [
         ...m,
         { role: "assistant", content: "Sorry, I couldn't reach the assistant just now. Please call or WhatsApp +91 78450 83016 — we're available 24/7." },
@@ -85,26 +93,38 @@ export default function AiAssistant() {
       <button
         onClick={() => setOpen((o) => !o)}
         aria-label={open ? "Close AI assistant" : "Open AI assistant"}
-        className="fixed bottom-6 left-6 z-50 w-14 h-14 rounded-full bg-gradient-to-br from-gold to-goldDark text-white shadow-2xl shadow-gold/40 flex items-center justify-center hover:scale-110 active:scale-95 transition-transform"
+        aria-expanded={open}
+        className="fixed bottom-[9.75rem] right-6 z-50 w-14 h-14 rounded-full bg-gradient-to-br from-gold to-goldDark text-white shadow-2xl shadow-gold/40 flex items-center justify-center hover:scale-110 active:scale-95 transition-transform"
+        title="AI Assistant"
       >
         {open ? <CloseIcon /> : <ChatIcon />}
         {!open && <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-emerald-400 animate-pulse shadow" />}
       </button>
 
       {open && (
-        <div className="fixed bottom-24 left-6 z-50 w-[min(24rem,calc(100vw-2.5rem))] glass-card-strong rounded-[1.75rem] shadow-2xl shadow-black/10 flex flex-col overflow-hidden" style={{ maxHeight: "min(34rem, calc(100dvh - 10rem))" }}>
+        <div
+          className="fixed bottom-48 right-6 z-50 w-[min(24rem,calc(100vw-2.5rem))] glass-card-strong rounded-[1.75rem] shadow-2xl shadow-black/10 flex flex-col overflow-hidden"
+          style={{ height: "min(32rem, calc(100vh - 14rem))" }}
+        >
           <div className="px-5 py-4 bg-gradient-to-r from-ink to-ink/95 text-white flex items-center gap-3 shrink-0">
             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-gold/30 to-gold/60 flex items-center justify-center font-display text-lg font-semibold text-goldLight shadow-lg shadow-black/20 shrink-0">KP</div>
             <div className="flex-1 min-w-0">
               <h3 className="font-display text-lg leading-tight truncate">Konkan Assistant</h3>
               <p className="text-[11px] text-white/60 truncate">Rooms, prices &amp; travel tips &middot; instant answers</p>
             </div>
-            <span className="inline-flex items-center gap-1.5 text-[10px] font-semibold text-emerald-300 bg-emerald-400/10 px-2.5 py-1 rounded-full shrink-0">
+            <span className="hidden sm:inline-flex items-center gap-1.5 text-[10px] font-semibold text-emerald-300 bg-emerald-400/10 px-2.5 py-1 rounded-full shrink-0">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" /> Online
             </span>
+            <button
+              onClick={() => setOpen(false)}
+              aria-label="Close AI assistant"
+              className="w-8 h-8 shrink-0 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
+            >
+              <CloseIcon />
+            </button>
           </div>
 
-          <div className="flex-1 overflow-y-auto p-4 space-y-3 bg-cream/60">
+          <div className="flex-1 overflow-y-auto p-4 space-y-3 bg-cream/60 min-h-0">
             {messages.map((m, i) => (
               <div key={i} className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}>
                 <div
@@ -127,7 +147,6 @@ export default function AiAssistant() {
                 </div>
               </div>
             )}
-            {error && <p className="text-[11px] text-red-500 text-center">{error}</p>}
             <div ref={bottomRef} />
           </div>
 
@@ -169,7 +188,12 @@ export default function AiAssistant() {
                 <SendIcon />
               </button>
             </div>
-            <p className="text-[10px] text-inkMuted mt-2 text-center">AI assistant &middot; call +91 78450 83016 for bookings</p>
+            <p className="text-[10px] text-inkMuted mt-2 text-center">
+              AI assistant &middot;{" "}
+              <a href={`tel:${PHONE}`} className="underline hover:text-goldDark">call</a> or{" "}
+              <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="underline hover:text-goldDark">WhatsApp</a>{" "}
+              +91 78450 83016 for bookings
+            </p>
           </form>
         </div>
       )}
