@@ -103,14 +103,14 @@ export default function AiAssistant() {
 
       {open && (
         <div
-          className="fixed bottom-48 right-6 z-50 w-[min(24rem,calc(100vw-2.5rem))] glass-card-strong rounded-[1.75rem] shadow-2xl shadow-black/10 flex flex-col overflow-hidden"
-          style={{ height: "min(32rem, calc(100vh - 14rem))" }}
+          className="fixed bottom-48 right-6 z-50 w-[min(24rem,calc(100vw-2.5rem))] rounded-[1.75rem] shadow-2xl shadow-black/40 flex flex-col overflow-hidden"
+          style={{ height: "min(32rem, calc(100vh - 14rem))", background: "linear-gradient(180deg, #1C1C1C 0%, #242424 100%)", border: "1px solid rgba(255,255,255,0.08)" }}
         >
-          <div className="px-5 py-4 bg-gradient-to-r from-ink to-ink/95 text-white flex items-center gap-3 shrink-0">
+          <div className="px-5 py-4 bg-gradient-to-r from-ink to-ink/95 text-white flex items-center gap-3 shrink-0 border-b border-white/10">
             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-gold/30 to-gold/60 flex items-center justify-center font-display text-lg font-semibold text-goldLight shadow-lg shadow-black/20 shrink-0">KP</div>
             <div className="flex-1 min-w-0">
               <h3 className="font-display text-lg leading-tight truncate">Konkan Assistant</h3>
-              <p className="text-[11px] text-white/60 truncate">Rooms, prices &amp; travel tips &middot; instant answers</p>
+              <p className="text-[11px] text-white/50 truncate">Rooms, prices &amp; travel tips &middot; instant answers</p>
             </div>
             <span className="hidden sm:inline-flex items-center gap-1.5 text-[10px] font-semibold text-emerald-300 bg-emerald-400/10 px-2.5 py-1 rounded-full shrink-0">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" /> Online
@@ -124,14 +124,14 @@ export default function AiAssistant() {
             </button>
           </div>
 
-          <div className="flex-1 overflow-y-auto p-4 space-y-3 bg-cream/60 min-h-0">
+          <div className="flex-1 overflow-y-auto p-4 space-y-3 min-h-0">
             {messages.map((m, i) => (
               <div key={i} className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}>
                 <div
-                  className={`max-w-[85%] px-4 py-2.5 text-sm leading-relaxed whitespace-pre-wrap shadow-sm ${
+                  className={`max-w-[85%] px-4 py-2.5 text-sm leading-relaxed whitespace-pre-wrap shadow-md ${
                     m.role === "user"
-                      ? "bg-ink text-white rounded-2xl rounded-br-md"
-                      : "bg-white text-ink border border-white/60 rounded-2xl rounded-bl-md"
+                      ? "bg-gradient-to-br from-gold to-goldDark text-white rounded-2xl rounded-br-md"
+                      : "bg-white/10 text-white/90 border border-white/10 rounded-2xl rounded-bl-md"
                   }`}
                 >
                   {m.content}
@@ -140,9 +140,9 @@ export default function AiAssistant() {
             ))}
             {loading && (
               <div className="flex justify-start">
-                <div className="bg-white border border-white/60 rounded-2xl rounded-bl-md px-4 py-3 shadow-sm inline-flex items-center gap-1.5">
+                <div className="bg-white/10 border border-white/10 rounded-2xl rounded-bl-md px-4 py-3 shadow-md inline-flex items-center gap-1.5">
                   {[0, 1, 2].map((d) => (
-                    <span key={d} className="w-2 h-2 rounded-full bg-goldDark animate-bounce" style={{ animationDelay: `${d * 0.15}s` }} />
+                    <span key={d} className="w-2 h-2 rounded-full bg-gold animate-bounce" style={{ animationDelay: `${d * 0.15}s` }} />
                   ))}
                 </div>
               </div>
@@ -156,7 +156,7 @@ export default function AiAssistant() {
                 <button
                   key={s}
                   onClick={() => send(s)}
-                  className="text-xs font-medium px-3 py-1.5 rounded-full bg-white border border-gold/30 text-goldDark hover:bg-gold/10 transition-colors"
+                  className="text-xs font-medium px-3 py-1.5 rounded-full bg-white/10 border border-gold/40 text-goldLight hover:bg-gold/20 transition-colors"
                 >
                   {s}
                 </button>
@@ -169,7 +169,7 @@ export default function AiAssistant() {
               e.preventDefault();
               send(input);
             }}
-            className="p-3 border-t border-white/40 bg-white/70 shrink-0"
+            className="p-3 border-t border-white/10 bg-black/30 shrink-0"
           >
             <div className="flex items-center gap-2">
               <input
@@ -177,21 +177,21 @@ export default function AiAssistant() {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Ask about rooms, prices, location…"
-                className="flex-1 min-w-0 px-4 py-2.5 rounded-xl text-sm bg-cream border border-white/60 text-ink placeholder:text-inkMuted focus:outline-none focus:ring-2 focus:ring-gold/40"
+                className="flex-1 min-w-0 px-4 py-2.5 rounded-xl text-sm bg-white/10 border border-white/15 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold/40"
               />
               <button
                 type="submit"
                 disabled={loading || !input.trim()}
                 aria-label="Send message"
-                className="w-10 h-10 shrink-0 rounded-xl bg-ink text-white flex items-center justify-center hover:bg-goldDark disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                className="w-10 h-10 shrink-0 rounded-xl bg-gradient-to-br from-gold to-goldDark text-white flex items-center justify-center hover:brightness-110 disabled:opacity-40 disabled:cursor-not-allowed transition-all"
               >
                 <SendIcon />
               </button>
             </div>
-            <p className="text-[10px] text-inkMuted mt-2 text-center">
+            <p className="text-[10px] text-white/40 mt-2 text-center">
               AI assistant &middot;{" "}
-              <a href={`tel:${PHONE}`} className="underline hover:text-goldDark">call</a> or{" "}
-              <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="underline hover:text-goldDark">WhatsApp</a>{" "}
+              <a href={`tel:${PHONE}`} className="underline text-goldLight hover:text-gold">call</a> or{" "}
+              <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="underline text-goldLight hover:text-gold">WhatsApp</a>{" "}
               +91 78450 83016 for bookings
             </p>
           </form>
