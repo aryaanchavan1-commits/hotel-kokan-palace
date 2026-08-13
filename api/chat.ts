@@ -1,4 +1,8 @@
-import type { VercelRequest, VercelResponse } from "@vercel/node";
+type VercelRequest = { method?: string; body?: unknown };
+type VercelResponse = {
+  status: (code: number) => VercelResponse;
+  json: (body: unknown) => void;
+};
 
 const GROQ_URL = "https://api.groq.com/openai/v1/chat/completions";
 const MODEL = "llama-3.3-70b-versatile";
