@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import AiAssistant from './AiAssistant';
 
 const Star = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="#D4AF37" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
@@ -97,7 +98,7 @@ export default function App() {
               <span className="gold-gradient-text italic font-light">Palace Lodge</span>
             </h1>
             <p className="text-lg md:text-xl text-white/80 max-w-xl leading-relaxed mb-8">
-              Clean, affordable non-AC rooms in the heart of Chiplun. Free WiFi, 24/7 hot water, and warm hospitality — right behind Juna Bus Stand.
+              Fresh, naturally cool rooms in the heart of Chiplun — thoughtfully ventilated for comfort through every season. Free WiFi, 24/7 hot water, and warm hospitality, right behind Juna Bus Stand.
             </p>
             <div className="flex flex-wrap gap-4">
               <a href={`tel:${PHONE}`} className="inline-flex items-center gap-3 px-8 py-4 rounded-full text-base font-bold bg-ink text-white shadow-2xl shadow-black/20 hover:-translate-y-1 transition-all duration-300">
@@ -130,7 +131,7 @@ export default function App() {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
             {[
-              { title: 'Clean Non-AC Rooms', desc: 'Well-ventilated rooms with fans, fresh linens, and daily housekeeping for a comfortable stay.', icon: '🏠' },
+              { title: 'Naturally Cool Rooms', desc: 'Breathable, well-ventilated rooms with ceiling fans, fresh linens, and daily housekeeping for a comfortable stay.', icon: '🏠' },
               { title: 'Central Location', desc: 'Behind Juna Bus Stand, Bazaarpeth. Walking distance to market, eateries, and local transport.', icon: '📍' },
               { title: '24/7 Hot Water', desc: 'Reliable hot water supply around the clock with full power backup for uninterrupted stays.', icon: '🚿' },
               { title: 'Free Parking & WiFi', desc: 'Ample on-site parking for cars and bikes plus complimentary high-speed WiFi for all guests.', icon: '🅿️' },
@@ -150,14 +151,14 @@ export default function App() {
         <div className="mx-auto max-w-6xl px-5 md:px-8">
           <div className="text-center mb-14 md:mb-20">
             <span className="inline-block text-xs font-bold tracking-[0.2em] uppercase text-goldDark mb-4">Accommodation</span>
-            <h2 className="font-display text-4xl md:text-6xl text-ink leading-[1.05] mb-5">Affordable <span className="italic font-light gold-gradient-text">Non-AC Rooms</span></h2>
-            <p className="text-inkMuted max-w-xl mx-auto">Choose from our clean, well-ventilated rooms — perfect for solo travelers, couples, and families.</p>
+            <h2 className="font-display text-4xl md:text-6xl text-ink leading-[1.05] mb-5">Naturally Cool <span className="italic font-light gold-gradient-text">Comfortable Rooms</span></h2>
+            <p className="text-inkMuted max-w-xl mx-auto">Thoughtfully ventilated rooms with fresh linens and daily housekeeping — perfect for solo travelers, couples, and families.</p>
           </div>
           <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
             {[
-              { img: 'images/rooms/unnamed.jpg', alt: 'Standard Single Room', badge: '1 Guest', name: 'Standard Single Room', price: '550', features: ['Single bed with fresh linens', 'Fan & attached bathroom', 'City view & work desk', 'Free WiFi'], rating: '4.8', stars: 5 },
-              { img: 'images/rooms/unnamed (1).jpg', alt: 'Standard Double Room', badge: '2 Guests', name: 'Standard Double Room', price: '700', features: ['Double bed with fresh linens', 'Fan & attached bathroom', 'City view & wardrobe', 'Free WiFi'], rating: '4.6', stars: 5 },
-              { img: 'images/rooms/unnamed (2).jpg', alt: 'Family Room', badge: '3 Guests', name: 'Family Room (Triple Bed)', price: '1300', features: ['Three beds with fresh linens', 'Fan & attached bathroom', 'Balcony & city view', 'Free WiFi'], rating: '4.5', stars: 5 },
+              { img: 'images/rooms/unnamed.jpg', alt: 'Standard Single Room', badge: '1 Guest', name: 'Standard Single Room', price: '550', features: ['Single bed with fresh linens', 'Ceiling fan & attached bathroom', 'City view & work desk', 'Free WiFi'], rating: '4.8', stars: 5 },
+              { img: 'images/rooms/unnamed (1).jpg', alt: 'Standard Double Room', badge: '2 Guests', name: 'Standard Double Room', price: '700', features: ['Double bed with fresh linens', 'Ceiling fan & attached bathroom', 'City view & wardrobe', 'Free WiFi'], rating: '4.6', stars: 5 },
+              { img: 'images/rooms/unnamed (2).jpg', alt: 'Family Room', badge: '3 Guests', name: 'Family Room (Triple Bed)', price: '1300', features: ['Three beds with fresh linens', 'Ceiling fan & attached bathroom', 'Balcony & city view', 'Free WiFi'], rating: '4.5', stars: 5 },
             ].map((room) => (
               <div key={room.name} className="glass-card rounded-[2rem] overflow-hidden shadow-xl shadow-black/5 flex flex-col">
                 <div className="relative h-56 md:h-64 overflow-hidden">
@@ -284,7 +285,7 @@ export default function App() {
                   <span className="block text-[10px] text-inkMuted tracking-[0.15em] uppercase font-semibold">Lodge &mdash; Chiplun</span>
                 </div>
               </a>
-              <p className="text-sm text-inkSoft leading-relaxed max-w-sm mb-6">Clean, affordable non-AC rooms in the heart of Chiplun. We welcome families, business travelers, pilgrims, and transit guests with comfortable rooms and warm service.</p>
+              <p className="text-sm text-inkSoft leading-relaxed max-w-sm mb-6">Fresh, naturally cool rooms in the heart of Chiplun. We welcome families, business travelers, pilgrims, and transit guests with comfortable rooms and warm service.</p>
               <div className="flex gap-2">
                 <a href={`tel:${PHONE}`} aria-label="Call" className="w-10 h-10 rounded-xl bg-gradient-to-br from-gold/15 to-gold/25 flex items-center justify-center text-goldDark hover:text-white hover:bg-gold transition-all"><Phone /></a>
                 <a href={`https://wa.me/${PHONE.replace(/[^0-9]/g, '')}`} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="w-10 h-10 rounded-xl bg-gradient-to-br from-ink/5 to-ink/10 flex items-center justify-center text-ink hover:text-white hover:bg-ink transition-all">
@@ -345,11 +346,12 @@ export default function App() {
       <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
         <a href={`tel:${PHONE}`} className="w-14 h-14 rounded-full bg-ink text-white shadow-2xl shadow-black/20 flex items-center justify-center text-xl hover:scale-110 transition-transform" title="Call Now">
           <Phone />
-        </a>
-        <a href={`https://wa.me/${PHONE.replace(/[^0-9]/g, '')}`} target="_blank" rel="noopener noreferrer" className="w-14 h-14 rounded-full bg-[#25D366] text-white shadow-2xl shadow-black/20 flex items-center justify-center text-xl hover:scale-110 transition-transform" title="WhatsApp">
+        </a>        <a href={`https://wa.me/${PHONE.replace(/[^0-9]/g, '')}`} target="_blank" rel="noopener noreferrer" className="w-14 h-14 rounded-full bg-[#25D366] text-white shadow-2xl shadow-black/20 flex items-center justify-center text-xl hover:scale-110 transition-transform" title="WhatsApp">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="white" stroke="none"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         </a>
       </div>
+
+      <AiAssistant />
     </div>
   );
 }
